@@ -4,7 +4,16 @@ import routes from "./routes/index";
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: [
+    "https://galinho.lovable.app",
+    /\.lovable\.app$/,
+    /\.replit\.dev$/,
+  ],
+  methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true,
+}));
 app.use(express.json());
 
 app.get("/health", (req, res) => {
