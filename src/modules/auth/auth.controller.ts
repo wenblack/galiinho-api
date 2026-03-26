@@ -8,7 +8,7 @@ export async function register(req: Request, res: Response): Promise<void> {
   try {
     const parsed = registerSchema.safeParse(req.body);
     if (!parsed.success) {
-      res.status(400).json({ errors: parsed.error.errors });
+      res.status(400).json({ errors: parsed.error.issues });
       return;
     }
 
@@ -36,7 +36,7 @@ export async function login(req: Request, res: Response): Promise<void> {
   try {
     const parsed = loginSchema.safeParse(req.body);
     if (!parsed.success) {
-      res.status(400).json({ errors: parsed.error.errors });
+      res.status(400).json({ errors: parsed.error.issues });
       return;
     }
 
